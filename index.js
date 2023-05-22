@@ -16,38 +16,16 @@ app.use(express.urlencoded({extended: true}));
 //For "understanding" JSON payloads less painfully
 app.use(express.json())
 
-console.log("Setting view engine to ejs")
-
-//Sets the view engine to use ejs
-//app.use("view engine", "ejs")
-//console.log("Settled view engine to ejs")
-
-
 
 //################################################################
 
-//Routings
-console.log("Defining routs")
+//Routes
 
-//app.use( "*", "./routes/generic"  )
+const routes = {
+  generic: require("./routes/generic")
+}
 
-
-app.get("*", (req, res) => {
-  res.status(200).json({
-    hey: "joe"
-  });
-})
-
-/*
-app.get("*", (req, res) => {
-  res.status(200)
-     .render("generic.ejs", {
-       foo: "bar"
-     })
-})
-*/
-
-console.log("Defined routs")
+app.use("*", routes.generic)
 
 
 //################################################################
