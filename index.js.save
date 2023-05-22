@@ -1,0 +1,50 @@
+const express    = require('express')
+
+const app = express()
+const port = 5002;
+const sys_name = "www v0"
+
+
+//################################################################
+
+//MIddlewares
+
+//For "understanding" URL query parameters less painfully
+app.use(express.urlencoded({extended: true}));
+
+//For "understanding" JSON payloads less painfully
+app.use(express.json())
+
+//Sets the view engine to use ejs
+app.use("view_engine", "ejs")
+
+
+//################################################################
+
+//Sets the port to be listened
+app.listen(port, () => {
+  console.log(`${sys_name} listening at http://localhost:${port}`)
+});
+
+
+
+//################################################################
+
+//Routings
+app.use( "/",           "./routes/home"     )
+app.use( "/index",      "./routes/home"     )
+app.use( "/home",       "./routes/home"     )
+app.use( "/privacy",    "./routes/privacy"  )
+app.use( "/category",   "./routes/category" )
+app.use( "/search",     "./routes/search"   )
+app.use( "/product",    "./routes/product"  )
+app.use( "/cart",       "./routes/cart"     )
+app.use( "/register",   "./routes/register" )
+app.use( "/shipping",   "./routes/shipping" )
+app.use( "/payment",    "./routes/payment"  )
+app.use( "/thankyou",   "./routes/thankyou" )
+app.use( "*",           "./routes/404"      )
+
+
+
+

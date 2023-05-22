@@ -1,15 +1,13 @@
 FROM node:latest
 
-RUN mkdir -p /brobath_test
+RUN mkdir -p /brobath_www
 
-WORKDIR /brobath_test
+WORKDIR /brobath_www
 
-COPY package.json /brobath_test/
+COPY . /brobath_www/
 
 RUN npm install
 
-COPY . /brobath_test
-
-EXPOSE 3000
+EXPOSE 5002
 
 CMD [ "npm", "start" ]

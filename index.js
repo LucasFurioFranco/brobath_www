@@ -6,56 +6,54 @@ const sys_name = "www v0"
 
 
 
+//################################################################
+
+//MIddlewares
+
+//For "understanding" URL query parameters less painfully
 app.use(express.urlencoded({extended: true}));
+
+//For "understanding" JSON payloads less painfully
 app.use(express.json())
 
+console.log("Setting view engine to ejs")
+
+//Sets the view engine to use ejs
+//app.use("view engine", "ejs")
+//console.log("Settled view engine to ejs")
 
 
+
+//################################################################
+
+//Routings
+console.log("Defining routs")
+
+//app.use( "*", "./routes/generic"  )
+
+
+app.get("*", (req, res) => {
+  res.status(200).json({
+    hey: "joe"
+  });
+})
+
+/*
+app.get("*", (req, res) => {
+  res.status(200)
+     .render("generic.ejs", {
+       foo: "bar"
+     })
+})
+*/
+
+console.log("Defined routs")
+
+
+//################################################################
+
+//Sets the port to be listened
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`${sys_name} listening at http://localhost:${port}`)
 });
 
-
-app.get('/getter', function (req, res) {
-  res.status(200);
-  res.json({
-    "status": 200,
-    "message": "success",
-    "body":    req.query,
-    "payload": {},
-    "sys_name": sys_name
-  });
-});
-
-app.post('/poster', function (req, res) {
-  res.status(200);
-  res.json({
-    "status":  200,
-    "message": "success",
-    "body":    req.body,
-    "payload": {},
-    "sys_name": sys_name
-  })
-})
-
-app.get('*', (req, res) => {
-  res.status(404);
-  res.json({
-    "status":  404,
-    "message": "Not Found: Method GET not defined for this path",
-    "body":    req.query,
-    "payload": {},
-    "sys_name": sys_name
-  });
-})
-
-app.post('*', (req, res) => {
-  res.status(404);
-  res.json({
-    "status":  404,
-    "message": "Not Found: Method POST not defined for this path",
-    "body":    req.body,
-    "payload": {},
-    "sys_name": sys_name
-  });
-})
