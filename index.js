@@ -44,6 +44,7 @@ const routes = {
 
 
 
+app.use( "^/$",                 routes.home               )
 app.use( "/home",               routes.home               )
 app.use( "/department",         routes.department         )
 app.use( "/category",           routes.category           )
