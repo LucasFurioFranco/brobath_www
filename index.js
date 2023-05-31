@@ -22,10 +22,45 @@ app.use(express.json())
 //Routes
 
 const routes = {
-  generic: require("./routes/generic")
+  home:               require( "./routes/home"               ),
+  department:         require( "./routes/department"         ),
+  category:           require( "./routes/category"           ),
+  search:             require( "./routes/search"             ),
+  product:            require( "./routes/product"            ),
+  cart:               require( "./routes/cart"               ),
+  register:           require( "./routes/register"           ),
+  shipping:           require( "./routes/shipping"           ),
+  shipping_addresses: require( "./routes/shipping_addresses" ),
+  payment:            require( "./routes/payment"            ),
+  payment_register:   require( "./routes/payment_register"   ),
+  thankyou:           require( "./routes/thankyou"           ),
+  user_data:          require( "./routes/user_data"          ),
+  user_purchases:     require( "./routes/user_purchases"     ),
+  privacy:            require( "./routes/privacy"            ),
+  promotions:         require( "./routes/promotions"         ),
+  generic:            require( "./routes/generic"            )
+
 }
 
-app.use("*", routes.generic)
+
+
+app.use( "/home",               routes.home               )
+app.use( "/department",         routes.department         )
+app.use( "/category",           routes.category           )
+app.use( "/search",             routes.search             )
+app.use( "/product",            routes.product            )
+app.use( "/cart",               routes.cart               )
+app.use( "/register",           routes.register           )
+app.use( "/shipping",           routes.shipping           )
+app.use( "/shipping_addresses", routes.shipping_addresses )
+app.use( "/payment",            routes.payment            )
+app.use( "/payment_register",   routes.payment_register   )
+app.use( "/thankyou",           routes.thankyou           )
+app.use( "/user_data",          routes.user_data          )
+app.use( "/user_purchases",     routes.user_purchases     )
+app.use( "/privacy",            routes.privacy            )
+app.use( "/promotions",         routes.promotions         )
+app.use( "*",                   routes.generic            )
 
 
 //################################################################
