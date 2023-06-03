@@ -11,7 +11,10 @@ const sys_name = "www v0"
 //MIddlewares
 
 //For "understanding" URL query parameters less painfully
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}))
+
+//We are using ejs to create page templates and render them
+app.set("view engine", "ejs")
 
 //For "understanding" JSON payloads less painfully
 app.use(express.json())

@@ -6,15 +6,44 @@
     <meta name="robots" content="noindex">
     
     <title>WWW Product</title>
-    
-    <script></script>
+   
+    <script>
+      window.dataLayer = window.dataLaywe || [];
+      window.dataLayer.push({
+        event:           "page_data",
+        page_type:       "details",
+        product_details: <%- JSON.stringify(product_details, null, 2) %>
+      })
+    </script>
     
   </head>
   
   
   
   <body>
-    <h1>Product</h1>
+
+    <header></header>
+
+    <nav></nav>
+
+    <main>
+      <% if(product_details.id !== undefined) { %>
+
+        <h1><%- product_details.name %></h1>
+        <h2><%- product_details.available ? "Available" : "Unavailable" %></h2>
+        <h3>Price: <%- product_details.price %></h3>
+
+      <% } else { %> <!-- Product not found -->
+
+        <h1>Sorry, product not found</h1>
+        <h2>A product with this ID was not found on our databases - check for URL malformed</h2>
+
+      <% } %>
+
+    </main>
+
+    <footer></footer>
+
   </body>
   
 </html>
